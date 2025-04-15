@@ -1,0 +1,7 @@
+int totalPictures = 52;
+int countPicturesInRow = 3;
+int countPicturesCouldDisplayed = totalPictures / countPicturesInRow;
+int countPicturesCouldntDisplayed = totalPictures % countPicturesCouldDisplayed;
+
+System.Console.WriteLine($"Количество картинок которое можно вывести в ряд {countPicturesCouldDisplayed}");
+System.Console.WriteLine($"Количество картинок сверх меры {countPicturesCouldntDisplayed }");
