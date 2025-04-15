@@ -1,1 +1,12 @@
-1
+System.Console.Write("Здравствуйте! как вас зовут?:");
+string name = Console.ReadLine();
+System.Console.Write("Сколько вам лет?:");
+int yearsOld = Convert.ToInt32(Console.ReadLine());
+System.Console.Write("Ваш знак зодиака:");
+string zodiacSign = Console.ReadLine();
+System.Console.Write("вы работаете на:");
+string work = Console.ReadLine();
+
+
+
+System.Console.WriteLine($"вас зовут {name}, вам {yearsOld}, вы {zodiacSign} и работаете на {work}");
