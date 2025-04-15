@@ -1,0 +1,7 @@
+string cupOfCoffee = "Tea";
+string cupOfTea = "Coffee";
+
+string cupOfCoffeeTrue = cupOfTea;
+string cupOfTeaTrue = cupOfCoffee;
+System.Console.WriteLine(cupOfTeaTrue);
+System.Console.WriteLine(cupOfCoffeeTrue);
