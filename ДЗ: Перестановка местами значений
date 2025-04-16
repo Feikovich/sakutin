@@ -1,7 +1,27 @@
-string cupOfCoffee = "Tea";
-string cupOfTea = "Coffee";
+using System;
 
-string cupOfCoffeeTrue = cupOfTea;
-string cupOfTeaTrue = cupOfCoffee;
-System.Console.WriteLine(cupOfTeaTrue);
-System.Console.WriteLine(cupOfCoffeeTrue);
+namespace MyProject  
+{
+    class Program    
+    {
+        static void Main(string[] args)  
+        {
+           string cupOfCoffee = "Tea";
+           string cupOfTea = "Coffee";
+           string tempCup = cupOfTea;
+           cupOfTea = cupOfCoffee;
+           cupOfCoffee = tempCup;
+
+            System.Console.WriteLine(cupOfCoffee);
+            System.Console.WriteLine(cupOfTea);
+
+        }
+    }
+}
+
+
+
+
+
+
+
