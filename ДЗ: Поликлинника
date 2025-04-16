@@ -1,0 +1,35 @@
+using System;
+
+namespace MyProject  
+{
+    class Program    
+    {
+        static void Main(string[] args)  
+        {
+            int fixedTimeReception = 10;
+            int numberOfPatientsInQueue;
+            int totalTimeOfWaitingInHours;
+            int totalTimeOfWaitingInMinutes;
+            int totalTimeOfWaiting;
+            int hour = 60;
+
+
+            System.Console.Write("Введите количество людей в очереди:");
+            numberOfPatientsInQueue = Convert.ToInt32(Console.ReadLine());
+
+            totalTimeOfWaiting = numberOfPatientsInQueue * fixedTimeReception;
+            totalTimeOfWaitingInHours = totalTimeOfWaiting / hour;
+            totalTimeOfWaitingInMinutes =  totalTimeOfWaiting % hour;
+
+            System.Console.WriteLine($"Вы должны отстоять в очереди {totalTimeOfWaitingInHours} часа и {totalTimeOfWaitingInMinutes} минут");
+
+        }
+    }
+}
+
+
+
+
+
+
+
