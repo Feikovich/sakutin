@@ -1,0 +1,42 @@
+using System;
+
+namespace MyProject  
+{
+    class Program    
+    {
+        static void Main(string[] args)  
+        {
+           int costCrystal = 10;
+           int moneyBag;
+           int quantityWantedToBuy;
+           int crystallsInBag;
+           int costOfTotalPurchase;
+
+           Console.Write("Сколько у вас золота?:");
+
+           moneyBag = Convert.ToInt32(Console.ReadLine());
+
+           System.Console.WriteLine($"Цена одного кристалла:{costCrystal}");
+           System.Console.Write("Сколько кристаллов вы хотите приобрести?:");
+
+           quantityWantedToBuy = Convert.ToInt32(Console.ReadLine());
+           costOfTotalPurchase = quantityWantedToBuy * costCrystal;
+           crystallsInBag = quantityWantedToBuy;
+           moneyBag = moneyBag - crystallsInBag * costCrystal;
+
+           System.Console.WriteLine($"Вы купили {crystallsInBag}, по цене {costCrystal}, у вас осталось {moneyBag} золота");
+
+
+
+           
+
+        }
+    }
+}
+
+
+
+
+
+
+
