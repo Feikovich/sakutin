@@ -11,17 +11,16 @@ namespace MyProject
             int totalTimeOfWaitingInHours;
             int totalTimeOfWaitingInMinutes;
             int totalTimeOfWaiting;
-            int hour = 60;
+            int oneHourInMunites = 60;
 
-
-            System.Console.Write("Введите количество людей в очереди:");
+            Console.Write("Введите количество людей в очереди:");
             numberOfPatientsInQueue = Convert.ToInt32(Console.ReadLine());
 
             totalTimeOfWaiting = numberOfPatientsInQueue * fixedTimeReception;
-            totalTimeOfWaitingInHours = totalTimeOfWaiting / hour;
-            totalTimeOfWaitingInMinutes =  totalTimeOfWaiting % hour;
+            totalTimeOfWaitingInHours = totalTimeOfWaiting / oneHourInMunites;
+            totalTimeOfWaitingInMinutes =  totalTimeOfWaiting % oneHourInMunites;
 
-            System.Console.WriteLine($"Вы должны отстоять в очереди {totalTimeOfWaitingInHours} часа и {totalTimeOfWaitingInMinutes} минут");
+            Console.WriteLine($"Вы должны отстоять в очереди {totalTimeOfWaitingInHours} часа и {totalTimeOfWaitingInMinutes} минут");
 
         }
     }
