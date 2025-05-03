@@ -1,0 +1,25 @@
+using System;
+
+namespace MyProject  
+{
+    class Program    
+    {
+        static void Main(string[] args)  
+        {
+            string stopWord = "exit";
+            string userInput;
+            bool wordIsWritten = false;
+
+            while(wordIsWritten == false)
+            {
+                Console.WriteLine("Грабители воруют печеньки, введите стоп слово чтобы это прекратилось!");
+                userInput = Console.ReadLine();
+                if(userInput == stopWord)
+                {
+                    wordIsWritten = true;
+                    Console.WriteLine("вы спасли печеньки!а");
+                }
+            }
+        }
+    }
+}
