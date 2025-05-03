@@ -8,7 +8,10 @@ namespace MyProject
         {
             int maxNumber = 110;
             int currentNumber;
-            for(currentNumber = 5; currentNumber < maxNumber; currentNumber += 7)
+            int startNumber = 5;
+            int stepOfNumber = 7;
+            
+            for(currentNumber = startNumber; currentNumber < maxNumber; currentNumber += stepOfNumber)
             {
                 Console.WriteLine(currentNumber);
             }
