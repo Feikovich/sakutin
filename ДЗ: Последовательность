@@ -1,0 +1,17 @@
+using System;
+
+namespace MyProject  
+{
+    class Program    
+    {
+        static void Main(string[] args)  
+        {
+            int maxNumber = 110;
+            int currentNumber;
+            for(currentNumber = 5; currentNumber < maxNumber; currentNumber += 7)
+            {
+                Console.WriteLine(currentNumber);
+            }
+        }
+    }
+}
