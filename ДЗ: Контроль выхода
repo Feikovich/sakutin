@@ -7,19 +7,15 @@ namespace MyProject
         static void Main(string[] args)  
         {
             string stopWord = "exit";
-            string userInput;
-            bool wordIsWritten = false;
+            string userInput = "";
 
-            while(wordIsWritten == false)
+            while(userInput != stopWord)
             {
                 Console.WriteLine("Грабители воруют печеньки, введите стоп слово чтобы это прекратилось!");
-                userInput = Console.ReadLine();
-                if(userInput == stopWord)
-                {
-                    wordIsWritten = true;
-                    Console.WriteLine("вы спасли печеньки!а");
-                }
+                userInput = Console.ReadLine();    
             }
+            
+            Console.WriteLine("вы спасли печеньки!");
         }
     }
 }
