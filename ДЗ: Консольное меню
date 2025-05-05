@@ -1,0 +1,62 @@
+using System;
+
+namespace MyProject  
+{
+    class Program    
+    {
+        static void Main(string[] args)  
+        {
+            Random random = new Random();
+            bool commandExit = false;
+            const string getCookies = "1";
+            const string getMilk = "2";
+            const string seeRandomNumber = "3";
+            const string clearConsole = "4";
+            const string exitProgramm = "5";
+
+            while(commandExit == false)
+            {
+                int randomNumber = random.Next(0,101);
+
+                Console.WriteLine("Меню");
+                Console.WriteLine("Введите нужную вам команду:");
+                Console.WriteLine("1 - Получить печеньки");
+                Console.WriteLine("2 - Получить молоко");
+                Console.WriteLine("3 - Увидеть случайное число от 0 до 100");
+                Console.WriteLine("4 - Очистить консоль");
+                Console.WriteLine("5 - Выйти из программы");
+
+                switch (Console.ReadLine())
+                {
+                    case getCookies:
+                        Console.WriteLine("Вы получили печеньки!");
+                        break;
+
+                    case getMilk:
+                        Console.WriteLine("Вы получили молоко!");
+                        break;
+
+                    case seeRandomNumber:
+                        Console.Write("Ваше случайное число:");
+                        Console.Write(randomNumber);
+                        Console.WriteLine("");
+                        break;
+
+                    case clearConsole:
+                        Console.Clear();
+                        break;
+
+                    case exitProgramm:
+                        commandExit = true;
+                        break;
+                        
+                    default:
+                        Console.WriteLine("Вы ввели неправильную команду");
+                        break;
+                }
+            }
+            
+            Console.WriteLine("Вы вышли из программы!");
+        }
+    }
+}
