@@ -6,48 +6,54 @@ namespace MyProject
     {
         static void Main(string[] args)  
         {
+            const string CommandGetCookies = "1";
+            const string CommandGetMilk = "2";
+            const string CommandSeeRandomNumber = "3";
+            const string CommandClearConsole = "4";
+            const string CommandExitProgramm = "5";
+
             Random random = new Random();
-            bool commandExit = false;
-            const string getCookies = "1";
-            const string getMilk = "2";
-            const string seeRandomNumber = "3";
-            const string clearConsole = "4";
-            const string exitProgramm = "5";
 
-            while(commandExit == false)
+            bool isExitCommandWritten = false;
+            int maxRandomNumber = 100;
+            string userInput;
+           
+
+            while(isExitCommandWritten == false)
             {
-                int randomNumber = random.Next(0,101);
-
                 Console.WriteLine("Меню");
-                Console.WriteLine("Введите нужную вам команду:");
-                Console.WriteLine("1 - Получить печеньки");
-                Console.WriteLine("2 - Получить молоко");
-                Console.WriteLine("3 - Увидеть случайное число от 0 до 100");
-                Console.WriteLine("4 - Очистить консоль");
-                Console.WriteLine("5 - Выйти из программы");
+                Console.WriteLine($"Введите нужную вам команду:");
+                Console.WriteLine($"{CommandGetCookies} - для того чтобы получить печеньки");
+                Console.WriteLine($"{CommandGetMilk} - для того чтобы получить молоко");
+                Console.WriteLine($"{CommandSeeRandomNumber} - Увидеть случайное число от 0 до 100");
+                Console.WriteLine($"{CommandClearConsole} - Очистить консоль");
+                Console.WriteLine($"{CommandExitProgramm} - Выйти из программы");
 
-                switch (Console.ReadLine())
+                userInput = Console.ReadLine();
+
+                switch (userInput)
                 {
-                    case getCookies:
+                    case CommandGetCookies:
                         Console.WriteLine("Вы получили печеньки!");
                         break;
 
-                    case getMilk:
+                    case CommandGetMilk:
                         Console.WriteLine("Вы получили молоко!");
                         break;
 
-                    case seeRandomNumber:
+                    case CommandSeeRandomNumber:
+                        int randomNumber = random.Next(0,maxRandomNumber + 1);
                         Console.Write("Ваше случайное число:");
                         Console.Write(randomNumber);
                         Console.WriteLine("");
                         break;
 
-                    case clearConsole:
+                    case CommandClearConsole:
                         Console.Clear();
                         break;
 
-                    case exitProgramm:
-                        commandExit = true;
+                    case CommandExitProgramm:
+                        isExitCommandWritten = true;
                         break;
                         
                     default:
