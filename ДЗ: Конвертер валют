@@ -1,0 +1,85 @@
+using System;
+
+namespace MyProject  
+{
+    class Program    
+    {
+        static void Main(string[] args)  
+        {
+            const string CommandDollarInRubles = "1";
+            const string CommandDollarInEuro ="2";
+            const string CommandRublesInDollars = "3";
+            const string CommandRublesInEuro = "4";
+            const string CommandEuroInRubles = "5";
+            const string CommandEuroInDollars ="6";
+            const string CommandClearConsole ="7";
+            const string CommandExit ="8";
+
+            float userRubles;
+            float userDollars;
+            float userEuro;
+            float dollarInRubles = 81.50f;
+            float dollarInEuro = 0.88f;
+            float rublesInDollars = 85.25f;
+            float rublesInEuro = 96.10f;
+            float euroInRubles = 92.66f;
+            float euroInDollars = 1.14f;
+            bool isExitWritten = false;
+            string userInput;
+
+            Console.WriteLine("Здравствуйте! Вы попали в конвертер валют");
+            Console.WriteLine("Сколько у вас долларов?");
+            userDollars = Convert.ToSingle(Console.ReadLine());
+
+            Console.WriteLine("Сколько у вас рублей?");
+            userRubles = Convert.ToSingle(Console.ReadLine());
+
+            Console.WriteLine("Сколько у вас евро");
+            userEuro = Convert.ToSingle(Console.ReadLine());
+
+            while (isExitWritten == false)
+            {
+                Console.WriteLine("Конвертер валют");
+                Console.WriteLine($"Ваш баланс рублей: {userRubles}");
+                Console.WriteLine($"Ваш баланс евро: {userEuro}");
+                Console.WriteLine($"Ваш баланс долларов: {userDollars}");
+                
+                Console.WriteLine("Выбери нужный вам обмен валюты");
+                Console.WriteLine($"{CommandDollarInRubles} - Доллары в рубли - курс = {dollarInRubles}");
+                Console.WriteLine($"{CommandDollarInEuro} - Доллары в евро - курс = {dollarInEuro}");
+                Console.WriteLine($"{CommandRublesInDollars} - Рубли в доллары - курс = {rublesInDollars}");
+                Console.WriteLine($"{CommandRublesInEuro} - Рубли в евро - курс = {rublesInEuro}");
+                Console.WriteLine($"{CommandEuroInRubles} - Евро в рубли - курс = {euroInRubles}");
+                Console.WriteLine($"{CommandEuroInDollars} - Евро в доллары - курс = {euroInDollars}");
+
+                userInput = Console.ReadLine();
+
+                switch(userInput)
+                {
+                    case CommandDollarInRubles:
+
+                        break;
+
+                    case CommandDollarInEuro:
+                        break;
+
+                    case CommandRublesInDollars:
+                        break;
+
+                    case CommandRublesInEuro:
+                        break;
+
+                    case CommandEuroInRubles:
+                        break;
+
+                    case CommandEuroInDollars:
+                        break;
+
+                    default:
+                        Console.WriteLine("Вы ввели неправильную команду");
+                        break;
+                }
+            }
+        }
+    }
+}
