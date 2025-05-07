@@ -18,6 +18,7 @@ namespace MyProject
             float userRubles;
             float userDollars;
             float userEuro;
+            float amountOfExchange;
             float dollarInRubles = 81.50f;
             float dollarInEuro = 0.88f;
             float rublesInDollars = 85.25f;
@@ -44,35 +45,124 @@ namespace MyProject
                 Console.WriteLine($"Ваш баланс евро: {userEuro}");
                 Console.WriteLine($"Ваш баланс долларов: {userDollars}");
                 
-                Console.WriteLine("Выбери нужный вам обмен валюты");
+                Console.WriteLine("Выбери нужную вам команду");
                 Console.WriteLine($"{CommandDollarInRubles} - Доллары в рубли - курс = {dollarInRubles}");
                 Console.WriteLine($"{CommandDollarInEuro} - Доллары в евро - курс = {dollarInEuro}");
                 Console.WriteLine($"{CommandRublesInDollars} - Рубли в доллары - курс = {rublesInDollars}");
                 Console.WriteLine($"{CommandRublesInEuro} - Рубли в евро - курс = {rublesInEuro}");
                 Console.WriteLine($"{CommandEuroInRubles} - Евро в рубли - курс = {euroInRubles}");
                 Console.WriteLine($"{CommandEuroInDollars} - Евро в доллары - курс = {euroInDollars}");
+                Console.WriteLine($"{CommandClearConsole} - Очистить консоль");
+                Console.WriteLine($"{CommandExit} - Выход из конвертера валют");
 
                 userInput = Console.ReadLine();
 
                 switch(userInput)
                 {
                     case CommandDollarInRubles:
+                        Console.WriteLine("Выбран обмен долларов на рубли");
+                        Console.Write("Какое количество валюты вы хотите обменять?:");
+                        amountOfExchange = Convert.ToSingle(Console.ReadLine());
 
+
+                        if (amountOfExchange > userDollars)
+                        {
+                            Console.WriteLine("У вас недостаточно баланса!");
+                        }
+                        else
+                        {
+                            userDollars -= amountOfExchange;
+                            userRubles += amountOfExchange * dollarInRubles;
+                        }
                         break;
 
                     case CommandDollarInEuro:
+                        Console.WriteLine("Выбран обмен долларов на евро");
+                        Console.Write("Какое количество валюты вы хотите обменять?:");
+                        amountOfExchange = Convert.ToSingle(Console.ReadLine());
+
+                        if (amountOfExchange > userEuro)
+                        {
+                            Console.WriteLine("У вас недостаточно баланса!");
+                        }
+                        else
+                        {
+                            userDollars -= amountOfExchange;
+                            userEuro += amountOfExchange / euroInDollars;
+                        }
                         break;
 
                     case CommandRublesInDollars:
+                        Console.WriteLine("Выбран обмен рублей на доллары");
+                        Console.Write("Какое количество валюты вы хотите обменять?:");
+                        amountOfExchange = Convert.ToSingle(Console.ReadLine());
+
+                        if (amountOfExchange > userRubles)
+                        {
+                            Console.WriteLine("У вас недостаточно баланса!");
+                        }
+                        else
+                        {
+                            userRubles -= amountOfExchange;
+                            userDollars += amountOfExchange / rublesInDollars;
+                        }
                         break;
 
                     case CommandRublesInEuro:
+                        Console.WriteLine("Выбран обмен рублей на евро");
+                        Console.Write("Какое количество валюты вы хотите обменять?:");
+                        amountOfExchange = Convert.ToSingle(Console.ReadLine());
+
+                        if (amountOfExchange > userRubles)
+                        {
+                            Console.WriteLine("У вас недостаточно баланса!");
+                        }
+                        else
+                        {
+                            userRubles -= amountOfExchange;
+                            userEuro += amountOfExchange / rublesInEuro;
+                        }
                         break;
 
                     case CommandEuroInRubles:
+                        Console.WriteLine("Выбран обмен евро на рубли");
+                        Console.Write("Какое количество валюты вы хотите обменять?:");
+                        amountOfExchange = Convert.ToSingle(Console.ReadLine());
+
+                        if (amountOfExchange > userEuro)
+                        {
+                            Console.WriteLine("У вас недостаточно баланса!");
+                        }
+                        else
+                        {
+                            userEuro -= amountOfExchange;
+                            userRubles += amountOfExchange * euroInRubles;
+                        }
                         break;
 
                     case CommandEuroInDollars:
+                        Console.WriteLine("Выбран обмен евро на доллары");
+                        Console.Write("Какое количество валюты вы хотите обменять?:");
+                        amountOfExchange = Convert.ToSingle(Console.ReadLine());
+
+                        if (amountOfExchange > userEuro)
+                        {
+                            Console.WriteLine("У вас недостаточно баланса!");
+                        }
+                        else
+                        {
+                            userEuro -= amountOfExchange;
+                            userDollars += amountOfExchange * euroInDollars;
+                        }
+                        break;
+                    
+                    case CommandClearConsole:
+                        Console.Clear();
+                        break;
+
+                    case CommandExit:
+                        isExitWritten = true;
+                        Console.WriteLine("Вы вышли из программы!");
                         break;
 
                     default:
