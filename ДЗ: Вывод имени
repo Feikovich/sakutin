@@ -1,0 +1,34 @@
+using System;
+
+namespace MyProject  
+{
+    class Program    
+    {
+        static void Main(string[] args)  
+        {
+            string userSymbol;
+            string userName;
+
+            Console.WriteLine("Введите ваше имя");
+            userName = Console.ReadLine();
+
+            Console.WriteLine("Введите ваш символ");
+            userSymbol = Console.ReadLine();
+            Console.Clear();
+
+            for(int i = 0; i < userName.Length; i++)
+            {
+                Console.Write(userSymbol);
+            }
+            Console.WriteLine("");
+            Console.WriteLine(userSymbol + userName + userSymbol);
+
+             for(int i = 0; i < userName.Length; i++)
+            {
+                Console.Write(userSymbol);
+            }
+
+            
+        }
+    }
+}
