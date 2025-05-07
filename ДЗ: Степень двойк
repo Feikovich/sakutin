@@ -1,0 +1,33 @@
+using System;
+using System.Runtime.InteropServices;
+
+namespace MyProject  
+{
+    class Program    
+    {
+        static void Main(string[] args)  
+        {
+            Random random= new Random();
+            
+            int lowerLimit = 1;
+            int upperLimit = 100;
+            int randomNumber = random.Next(lowerLimit, upperLimit);
+            int countOfDegrees = 0;
+            int numberWithDegrees = 2;
+            int degree = 2;
+
+            Console.WriteLine(randomNumber);
+
+            while (randomNumber > numberWithDegrees)
+            {
+                numberWithDegrees = numberWithDegrees * degree;
+                countOfDegrees++;
+                Console.WriteLine(numberWithDegrees);
+            }
+
+            Console.WriteLine(countOfDegrees);
+
+
+        }
+    }
+}
