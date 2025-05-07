@@ -1,0 +1,33 @@
+using System;
+using System.IO.Compression;
+
+namespace MyProject  
+{
+    class Program    
+    {
+        static void Main(string[] args)  
+        {
+            string password = "stone";
+            string userInput;
+            int attemptsToWritePassword = 3;
+            
+
+            for (int i = 0; i < attemptsToWritePassword; attemptsToWritePassword--)
+            {
+                Console.WriteLine("Введите пароль");
+                userInput = Console.ReadLine();
+
+                if (userInput == password)
+                {
+                    Console.WriteLine("Вы получили доступ к секретным данным!");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Неправильный пароль");
+                    Console.WriteLine("у вас осталось попыток: "+(attemptsToWritePassword - 1));
+                }
+            }
+        }
+    }
+}
