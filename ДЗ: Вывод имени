@@ -27,8 +27,6 @@ namespace MyProject
             {
                 Console.Write(userSymbol);
             }
-
-            
         }
     }
 }
