@@ -21,11 +21,11 @@ namespace MyProject
             float amountOfExchange;
             float dollarInRubles = 81.50f;
             float dollarInEuro = 0.88f;
-            float rublesInDollars = 85.25f;
-            float rublesInEuro = 96.10f;
-            float euroInRubles = 92.66f;
-            float euroInDollars = 1.14f;
-            bool isExitWritten = false;
+            float rublesInDollars = 0.012f;
+            float rublesInEuro = 0.011f;
+            float euroInRubles = 90.66f;
+            float euroInDollars = 0.011f;
+            bool isRunning = true;
             string userInput;
 
             Console.WriteLine("Здравствуйте! Вы попали в конвертер валют");
@@ -38,7 +38,7 @@ namespace MyProject
             Console.WriteLine("Сколько у вас евро");
             userEuro = Convert.ToSingle(Console.ReadLine());
 
-            while (isExitWritten == false)
+            while (isRunning)
             {
                 Console.WriteLine("Конвертер валют");
                 Console.WriteLine($"Ваш баланс рублей: {userRubles}");
@@ -64,7 +64,6 @@ namespace MyProject
                         Console.Write("Какое количество валюты вы хотите обменять?:");
                         amountOfExchange = Convert.ToSingle(Console.ReadLine());
 
-
                         if (amountOfExchange > userDollars)
                         {
                             Console.WriteLine("У вас недостаточно баланса!");
@@ -88,7 +87,7 @@ namespace MyProject
                         else
                         {
                             userDollars -= amountOfExchange;
-                            userEuro += amountOfExchange / euroInDollars;
+                            userEuro += amountOfExchange * dollarInEuro;
                         }
                         break;
 
@@ -104,7 +103,7 @@ namespace MyProject
                         else
                         {
                             userRubles -= amountOfExchange;
-                            userDollars += amountOfExchange / rublesInDollars;
+                            userDollars += amountOfExchange * rublesInDollars;
                         }
                         break;
 
@@ -120,7 +119,7 @@ namespace MyProject
                         else
                         {
                             userRubles -= amountOfExchange;
-                            userEuro += amountOfExchange / rublesInEuro;
+                            userEuro += amountOfExchange * rublesInEuro;
                         }
                         break;
 
@@ -161,7 +160,7 @@ namespace MyProject
                         break;
 
                     case CommandExit:
-                        isExitWritten = true;
+                        isRunning = false;
                         Console.WriteLine("Вы вышли из программы!");
                         break;
 
