@@ -1,5 +1,4 @@
 using System;
-using System.IO.Compression;
 
 namespace MyProject  
 {
@@ -12,7 +11,7 @@ namespace MyProject
             int attemptsToWritePassword = 3;
             
 
-            for (int i = 0; i < attemptsToWritePassword; attemptsToWritePassword--)
+            for (int i = attemptsToWritePassword; i > 0; i--)
             {
                 Console.WriteLine("Введите пароль");
                 userInput = Console.ReadLine();
@@ -25,7 +24,7 @@ namespace MyProject
                 else
                 {
                     Console.WriteLine("Неправильный пароль");
-                    Console.WriteLine("у вас осталось попыток: "+(attemptsToWritePassword - 1));
+                    Console.WriteLine("у вас осталось попыток: " + (i - 1));
                 }
             }
         }
