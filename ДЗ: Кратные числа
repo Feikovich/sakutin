@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.InteropServices;
 
 namespace MyProject  
 {
@@ -13,26 +12,22 @@ namespace MyProject
             int minimumNumber = 50;
             int maximumNumber = 150;
             int countOfMultipleNumbers = 0;
-            int randomNumber = random.Next(lowerlimit,upperLimit + 1); 
+            int randomNumber = random.Next(lowerlimit, upperLimit + 1);
+            int firstMultipleNumber = 0;
 
-            for (int i = minimumNumber;i <= maximumNumber; i++)
+            while(firstMultipleNumber <= minimumNumber)
             {
-                int checkMultipleNumber = i;
+                firstMultipleNumber += randomNumber;
+            }
 
-                while(checkMultipleNumber >= randomNumber)
-                {
-                    checkMultipleNumber -= randomNumber;
-                }
-
-                if(checkMultipleNumber == 0)
-                {
-                    countOfMultipleNumbers++ ;
-                }
+            while(firstMultipleNumber <= maximumNumber)
+            {
+                firstMultipleNumber += randomNumber;
+                countOfMultipleNumbers++;
             }
             Console.WriteLine(randomNumber);
+
             Console.WriteLine(countOfMultipleNumbers);
-
-
         }
     }
 }
