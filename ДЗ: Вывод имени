@@ -27,8 +27,6 @@ namespace MyProject
             Console.WriteLine(multipleSymbols);
             Console.WriteLine(userNameWithSymbols);
             Console.WriteLine(multipleSymbols);
-
-        
         }
     }
 }
