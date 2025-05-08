@@ -1,0 +1,169 @@
+using System;
+using System.Runtime.InteropServices;
+
+namespace MyProject  
+{
+    class Program    
+    {
+        static void Main(string[] args)  
+        {
+            const string CommandPlayerDefaultAttack = "1";
+            const string CommandPlayerSkillFireball = "2";
+            const string CommandPlayerSkillExplosion = "3";
+            const string CommandPlayerSkillHeal = "4";
+
+            Random random = new Random();
+            bool gameIsRunning = true;
+            bool isFireballUsed = false;
+            int playerMaxHealth = 500;
+            int playerHealth = playerMaxHealth;
+            int playerDefaultAttackDamage = 125;
+            int playerMaxManapool = 150;
+            int playerManaPool = playerMaxManapool;
+            int playerSkillFireballDamage = 250;
+            int playerSkillFireballManaCost = 50;
+            int playerSkillExplosionDamage = 150;
+            int playerSkillExplosionManaCost = 25;
+            int playerSkillHealAmountOfRestoredHealth = 200;
+            int playerSkillHealAmountOfRestoredMana = 75;
+            int playerSkillHealQuantityUses = 3; 
+            int bossHealth = 2000;
+            int bossDamage;
+            int bossMaxDamage = 90;
+            int bossMinDamage = 50;
+        
+            while (gameIsRunning)
+            {   
+                Console.WriteLine("Сражение с боссом!");
+                Console.WriteLine($"У босса осталось:{bossHealth} здоровья");
+                Console.WriteLine($"Мана игрока: {playerManaPool}");
+                Console.WriteLine($"Здоровье игрока: {playerHealth}");
+                Console.WriteLine("");
+                Console.WriteLine($"Ваш ход");
+                Console.WriteLine($"{CommandPlayerDefaultAttack} - Обычная атака");
+                Console.WriteLine($"Наносит {playerDefaultAttackDamage} урона");
+                Console.WriteLine($"{CommandPlayerSkillFireball} - Огненный шар");
+                Console.WriteLine($"Наносит {playerSkillFireballDamage} урона и тратит {playerSkillFireballManaCost} маны");
+                Console.WriteLine($"{CommandPlayerSkillExplosion} - Взрыв, можно использовать только после огненного шара!");
+                Console.WriteLine($"Наносит {playerSkillExplosionDamage} урона и тратит {playerSkillExplosionManaCost} маны");
+                Console.WriteLine($"{CommandPlayerSkillHeal} - Лечение");
+                Console.WriteLine($"Восстанавливает {playerSkillHealAmountOfRestoredHealth} здоровья и {playerSkillHealAmountOfRestoredMana} маны");
+                string userTurn = Console.ReadLine();
+                
+                switch(userTurn)
+                {   
+                    case CommandPlayerDefaultAttack:
+                        
+                        bossHealth -= playerDefaultAttackDamage;
+                        
+                        Console.Clear();
+                        Console.WriteLine($"Вы нанесли боссу {playerDefaultAttackDamage} урона!");
+                        Console.WriteLine($"У босса осталось {bossHealth} здоровья");
+                        Console.WriteLine("");
+                        break;
+
+                    case CommandPlayerSkillFireball:
+        
+                        if (playerManaPool >= playerSkillFireballManaCost)
+                        {
+                            bossHealth -= playerSkillFireballDamage;
+                            playerManaPool -= playerSkillFireballManaCost;
+                            isFireballUsed = true;
+
+                            Console.Clear();
+                            Console.WriteLine($"Вы нанесли боссу {playerSkillFireballDamage} урона!");
+                            Console.WriteLine($"У босса осталось {bossHealth} здоровья");
+                            Console.WriteLine("");
+                        }
+                        else
+                        {
+                            Console.WriteLine("У вас недостаточно маны!");
+                        }
+                        break;
+
+                    case CommandPlayerSkillExplosion:
+
+                        if(isFireballUsed && playerManaPool >= playerSkillExplosionManaCost)
+                        {
+                            isFireballUsed = false;
+                            playerManaPool -= playerSkillExplosionManaCost;
+                            bossHealth -= playerSkillExplosionDamage;
+
+                            Console.Clear();
+                            Console.WriteLine($"Вы нанесли боссу {playerSkillExplosionDamage} урона!");
+                            Console.WriteLine($"У босса осталось {bossHealth} здоровья");
+                            Console.WriteLine("");
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Вы не использовали огненный шар или у вас недостаточно маны!");
+                        }
+                        break;
+
+                    case CommandPlayerSkillHeal:
+
+                        if(playerSkillHealQuantityUses > 0)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Вы использовали лечение");
+                            Console.WriteLine($"Вы восстановили себе {playerSkillHealAmountOfRestoredHealth} здоровья и {playerSkillHealAmountOfRestoredMana} маны");
+                            Console.WriteLine("");
+                            if(playerHealth + playerSkillHealAmountOfRestoredHealth > playerMaxHealth)
+                            {
+                                playerHealth = playerMaxHealth;
+                            }
+                            else
+                            {
+                                playerHealth += playerSkillHealAmountOfRestoredHealth;
+                            }
+                            if(playerManaPool + playerSkillHealAmountOfRestoredMana > playerMaxManapool)
+                            {
+                                playerManaPool = playerMaxManapool;
+                            }
+                            else    
+                            {
+                                playerManaPool += playerSkillHealAmountOfRestoredMana;
+                            }
+                            playerSkillHealQuantityUses--;
+
+                            Console.WriteLine($"Ваше текущее здоровье: {playerHealth}");
+                            Console.WriteLine($"Ваша текущая мана: {playerManaPool}");
+                            Console.WriteLine("");
+                        }
+                        else
+                        {
+                            Console.WriteLine("У вас закончились использования лечения");
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+                bossDamage = random.Next(bossMinDamage, bossMaxDamage);
+                playerHealth -= bossDamage;
+                Console.WriteLine($"Босс нанёс вам {bossDamage}");
+                Console.WriteLine($"У вас осталось {playerHealth} здоровья");
+                Console.WriteLine();
+                Console.WriteLine("Нажмите любую клавишу чтобы продолжить");
+                Console.ReadLine();
+
+                if (bossHealth <= 0 && playerHealth <= 0)
+                {
+                    gameIsRunning = false;
+                    Console.WriteLine("Ничья!");
+                }
+                else if (playerHealth <= 0)
+                {
+                    gameIsRunning = false;
+                    Console.WriteLine("Вы проиграли");
+                }
+                else if (bossHealth <= 0)
+                {
+                    gameIsRunning = false;
+                    Console.WriteLine("Вы победили босса!");
+                }
+            }
+        }
+    }
+}
