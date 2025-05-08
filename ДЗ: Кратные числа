@@ -12,12 +12,12 @@ namespace MyProject
             int minimumNumber = 50;
             int maximumNumber = 150;
             int countOfMultipleNumbers = 0;
-            int randomNumber = random.Next(lowerlimit, upperLimit + 1);
+            int randomNumber = 12;
             int firstMultipleNumber = 0;
 
             for(int i = 0; i <= maximumNumber; i += randomNumber)
             {
-                if(i > minimumNumber && i < maximumNumber)
+                if(i > minimumNumber)
                 {
                     countOfMultipleNumbers++;
                 }
