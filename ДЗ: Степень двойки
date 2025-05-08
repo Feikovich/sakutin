@@ -10,14 +10,14 @@ namespace MyProject
             
             int lowerLimit = 1;
             int upperLimit = 100;
-            int randomNumber = random.Next(lowerLimit, upperLimit);
+            int randomNumber = 4;
             int countOfDegrees = 1;
             int numberWithDegrees = 2;
             int degree = 2;
 
             Console.WriteLine($"Случайное число: {randomNumber}");
 
-            while (randomNumber > numberWithDegrees)
+            while (randomNumber >= numberWithDegrees)
             {
                 numberWithDegrees = numberWithDegrees * degree;
                 countOfDegrees++;
