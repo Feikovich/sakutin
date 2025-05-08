@@ -6,30 +6,29 @@ namespace MyProject
     {
         static void Main(string[] args)  
         {
-            string userSymbol;
+            char userSymbol;
             string userName;
             string userNameWithSymbols;
+            string multipleSymbols = "";
 
             Console.WriteLine("Введите ваше имя");
             userName = Console.ReadLine();
 
             Console.WriteLine("Введите ваш символ");
-            userSymbol = Console.ReadLine();
+            userSymbol = Console.ReadKey(true).KeyChar;
             Console.Clear();
 
             userNameWithSymbols = userSymbol + userName + userSymbol;
 
             for (int i = 0; i < userNameWithSymbols.Length; i++)
             {
-                Console.Write(userSymbol);
+                multipleSymbols = multipleSymbols + userSymbol;
             }
-            Console.WriteLine("");
+            Console.WriteLine(multipleSymbols);
             Console.WriteLine(userNameWithSymbols);
+            Console.WriteLine(multipleSymbols);
 
-            for (int i = 0; i < userNameWithSymbols.Length; i++)
-            {
-                Console.Write(userSymbol);
-            }
+        
         }
     }
 }
