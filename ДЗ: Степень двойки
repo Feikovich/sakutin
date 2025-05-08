@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.InteropServices;
 
 namespace MyProject  
 {
@@ -12,22 +11,19 @@ namespace MyProject
             int lowerLimit = 1;
             int upperLimit = 100;
             int randomNumber = random.Next(lowerLimit, upperLimit);
-            int countOfDegrees = 0;
+            int countOfDegrees = 1;
             int numberWithDegrees = 2;
             int degree = 2;
 
-            Console.WriteLine(randomNumber);
+            Console.WriteLine($"Случайное число: {randomNumber}");
 
             while (randomNumber > numberWithDegrees)
             {
                 numberWithDegrees = numberWithDegrees * degree;
                 countOfDegrees++;
-                Console.WriteLine(numberWithDegrees);
             }
-
-            Console.WriteLine(countOfDegrees);
-
-
+            Console.WriteLine($"Число превозмогающее случайное: {numberWithDegrees}");
+            Console.WriteLine($"Количество степеней двойки: {countOfDegrees}");
         }
     }
 }
