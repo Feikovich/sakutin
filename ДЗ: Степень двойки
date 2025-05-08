@@ -10,7 +10,7 @@ namespace MyProject
             
             int lowerLimit = 1;
             int upperLimit = 100;
-            int randomNumber = 4;
+            int randomNumber = random.Next(lowerLimit, upperLimit);
             int countOfDegrees = 1;
             int numberWithDegrees = 2;
             int degree = 2;
