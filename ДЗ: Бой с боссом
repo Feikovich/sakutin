@@ -20,13 +20,13 @@ namespace MyProject
             int playerDefaultAttackDamage = 125;
             int playerMaxManapool = 150;
             int playerManaPool = playerMaxManapool;
-            int playerSkillFireballDamage = 250;
-            int playerSkillFireballManaCost = 50;
-            int playerSkillExplosionDamage = 150;
-            int playerSkillExplosionManaCost = 25;
-            int playerSkillHealAmountOfRestoredHealth = 200;
-            int playerSkillHealAmountOfRestoredMana = 75;
-            int playerSkillHealQuantityUses = 3; 
+            int playerFireballDamage = 250;
+            int playerFireballManaCost = 50;
+            int playerExplosionDamage = 150;
+            int playerExplosionManaCost = 25;
+            int playerHealAmountOfRestoredHealth = 200;
+            int playerHealAmountOfRestoredMana = 75;
+            int playerHealQuantityUses = 3; 
             int bossHealth = 2000;
             int bossDamage;
             int bossMaxDamage = 90;
@@ -43,11 +43,11 @@ namespace MyProject
                 Console.WriteLine($"{CommandPlayerDefaultAttack} - Обычная атака");
                 Console.WriteLine($"Наносит {playerDefaultAttackDamage} урона");
                 Console.WriteLine($"{CommandFireball} - Огненный шар");
-                Console.WriteLine($"Наносит {playerSkillFireballDamage} урона и тратит {playerSkillFireballManaCost} маны");
+                Console.WriteLine($"Наносит {playerFireballDamage} урона и тратит {playerFireballManaCost} маны");
                 Console.WriteLine($"{CommandExplosion} - Взрыв, можно использовать только после огненного шара!");
-                Console.WriteLine($"Наносит {playerSkillExplosionDamage} урона и тратит {playerSkillExplosionManaCost} маны");
+                Console.WriteLine($"Наносит {playerExplosionDamage} урона и тратит {playerExplosionManaCost} маны");
                 Console.WriteLine($"{CommandHeal} - Лечение");
-                Console.WriteLine($"Восстанавливает {playerSkillHealAmountOfRestoredHealth} здоровья и {playerSkillHealAmountOfRestoredMana} маны");
+                Console.WriteLine($"Восстанавливает {playerHealAmountOfRestoredHealth} здоровья и {playerHealAmountOfRestoredMana} маны");
                 string userTurn = Console.ReadLine();
                 
                 switch(userTurn)
@@ -63,14 +63,14 @@ namespace MyProject
 
                     case CommandFireball:
         
-                        if (playerManaPool >= playerSkillFireballManaCost)
+                        if (playerManaPool >= playerFireballManaCost)
                         {
-                            bossHealth -= playerSkillFireballDamage;
-                            playerManaPool -= playerSkillFireballManaCost;
+                            bossHealth -= playerFireballDamage;
+                            playerManaPool -= playerFireballManaCost;
                             isFireballUsed = true;
 
                             Console.Clear();
-                            Console.WriteLine($"Вы нанесли боссу {playerSkillFireballDamage} урона!");
+                            Console.WriteLine($"Вы нанесли боссу {playerFireballDamage} урона!");
                             Console.WriteLine($"У босса осталось {bossHealth} здоровья");
                             Console.WriteLine("");
                         }
@@ -82,14 +82,14 @@ namespace MyProject
 
                     case CommandExplosion:
 
-                        if(isFireballUsed && playerManaPool >= playerSkillExplosionManaCost)
+                        if(isFireballUsed && playerManaPool >= playerExplosionManaCost)
                         {
                             isFireballUsed = false;
-                            playerManaPool -= playerSkillExplosionManaCost;
-                            bossHealth -= playerSkillExplosionDamage;
+                            playerManaPool -= playerExplosionManaCost;
+                            bossHealth -= playerExplosionDamage;
 
                             Console.Clear();
-                            Console.WriteLine($"Вы нанесли боссу {playerSkillExplosionDamage} урона!");
+                            Console.WriteLine($"Вы нанесли боссу {playerExplosionDamage} урона!");
                             Console.WriteLine($"У босса осталось {bossHealth} здоровья");
                             Console.WriteLine("");
                         }
@@ -102,29 +102,29 @@ namespace MyProject
 
                     case CommandHeal:
 
-                        if(playerSkillHealQuantityUses > 0)
+                        if(playerHealQuantityUses > 0)
                         {
                             Console.Clear();
                             Console.WriteLine("Вы использовали лечение");
-                            Console.WriteLine($"Вы восстановили себе {playerSkillHealAmountOfRestoredHealth} здоровья и {playerSkillHealAmountOfRestoredMana} маны");
+                            Console.WriteLine($"Вы восстановили себе {playerHealAmountOfRestoredHealth} здоровья и {playerHealAmountOfRestoredMana} маны");
                             Console.WriteLine("");
-                            if(playerHealth + playerSkillHealAmountOfRestoredHealth > playerMaxHealth)
+                            if(playerHealth + playerHealAmountOfRestoredHealth > playerMaxHealth)
                             {
                                 playerHealth = playerMaxHealth;
                             }
                             else
                             {
-                                playerHealth += playerSkillHealAmountOfRestoredHealth;
+                                playerHealth += playerHealAmountOfRestoredHealth;
                             }
-                            if(playerManaPool + playerSkillHealAmountOfRestoredMana > playerMaxManapool)
+                            if(playerManaPool + playerHealAmountOfRestoredMana > playerMaxManapool)
                             {
                                 playerManaPool = playerMaxManapool;
                             }
                             else    
                             {
-                                playerManaPool += playerSkillHealAmountOfRestoredMana;
+                                playerManaPool += playerHealAmountOfRestoredMana;
                             }
-                            playerSkillHealQuantityUses--;
+                            playerHealQuantityUses--;
 
                             Console.WriteLine($"Ваше текущее здоровье: {playerHealth}");
                             Console.WriteLine($"Ваша текущая мана: {playerManaPool}");
